@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load components %}
+
+{% block title %}{{ object.title }}{% endblock title %}
+
+
+{% block content %}
+<div class="p-4">
+  <input type="hidden" id="post-id" value="{{ object.id }}" />
+  <article>
+    <div class="blog-post p-5">
+      <h1>{{ object.title }}</h1>
+      <hr />
+      <p class="blog-post-meta text-secondary">{{ post.created|date:"d.m.Y" }} by {{ post.author }}</p>
+      <p>{{ object.body|safe }}</p>
+      {% like_btn %}
+    </div>
+  </article>
+
+  {% include 'components/comments.html' %}
+  <!-- render last_articles here -->
+  <div class="article-wrap">
+    <h2>Last articles:</h2>
+    <ul class="article-list">
+      {% for article in last_articles %}
+      <li>{{ article.title }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock content%}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load components %}
+
+{% block title %}Posts{% endblock title%}
+
+
+{% block content %}
+<div class="m-4">
+  <section class="mt-4 p-5 bg-secondary text-white rounded">
+    <h1 class="display-4">Hello, world!</h1>
+  </section>
+  <section>
+    <ul class="row">
+      {% for post in post_list %}
+      <li class="post-item col-12 col-md-6 p-2">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">{{ post.title }}</h2>
+            <p class="text-secondary">{{ post.created|date:"d.m.Y" }} by {{ post.author }}</p>
+            <p class="card-text">{{post.body|safe|truncatewords_html:15 }}</p>
+            {% like_btn %}
+            <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </li>
+
+      {% endfor %}
+    </ul>
+  </section>
+
+</div>
+{% endblock content %}

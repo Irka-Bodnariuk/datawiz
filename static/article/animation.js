@@ -57,5 +57,3 @@ for (let i = 0; i < columnCharts.length; i++) {
     },
   });
 }
-
-// change of animation

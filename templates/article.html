@@ -19,15 +19,17 @@
   </article>
 
   {% include 'components/comments.html' %}
-  <!-- render last_articles here -->
-  <div class="article-wrap">
+
+  <aside class="article-wrap">
     <h2>Last articles:</h2>
     <ul class="article-list">
       {% for article in last_articles %}
-      <li>{{ article.title }}</li>
+      <li>
+        {{ article.title }}
+      </li>
       {% endfor %}
     </ul>
-  </div>
+  </aside>
 </div>
 
 {% endblock content%}
